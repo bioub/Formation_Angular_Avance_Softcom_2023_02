@@ -1,0 +1,14 @@
+:host {
+  display: block
+}
+
+nav {
+  background-color: #eee;
+  display: flex;
+  padding: 10px;
+
+  a {
+    color: black;
+    margin-right: 10px;
+  }
+}

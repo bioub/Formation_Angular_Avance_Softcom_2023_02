@@ -1,0 +1,15 @@
+<h2>Exercice (fr)</h2>
+<p>
+  Lorsqu'on saisi dans le champs, les composants Ex3ListItem sont vérifiés lors de la détection de changement d'Angular.
+  Réécrire Ex3List en utilisant ChangeDetectionStrategy.OnPush et faire les changements nécessaire dans Ex3.
+</p>
+<h2>Exercise (en)</h2>
+<p>
+  When we type into the field, Ex3ListItem components are checked by Angular change detection.
+  Refactor Ex3List using ChangeDetectionStrategy.OnPush and make the appropriate changes in Ex3.
+</p>
+<form (submit)="addValue()">
+  <input name="value" [(ngModel)]="value">
+  <button>+</button>
+</form>
+<app-ex3-list [items]="items"></app-ex3-list>
