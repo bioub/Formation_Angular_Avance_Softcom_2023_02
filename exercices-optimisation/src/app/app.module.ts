@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { ExcelModule } from './excel/excel.module';
 import { ExercicesModule } from './exercices/exercices.module';
 import { MenuComponent } from './menu/menu.component';
 
@@ -14,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
   imports: [
     BrowserModule,
     ExercicesModule,
+    // ExcelModule,
     AppRoutingModule
   ],
   providers: [],

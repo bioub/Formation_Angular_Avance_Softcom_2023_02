@@ -1,9 +1,10 @@
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DoCheck, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ex3-list-item',
   templateUrl: './ex3-list-item.component.html',
-  styleUrls: ['./ex3-list-item.component.scss']
+  styleUrls: ['./ex3-list-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Ex3ListItemComponent implements OnInit, DoCheck {
 
@@ -15,6 +16,6 @@ export class Ex3ListItemComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log('Ex3ListComponent checked');
+    console.log('Ex3ListItemComponent checked');
   }
 }

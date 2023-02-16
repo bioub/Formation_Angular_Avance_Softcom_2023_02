@@ -10,6 +10,8 @@ import { Ex3ListItemComponent } from './ex3/ex3-list-item/ex3-list-item.componen
 import { FormsModule } from '@angular/forms';
 import { Ex4Component } from './ex4/ex4.component';
 import { Ex5Component } from './ex5/ex5.component';
+import { DoublePipe } from './double.pipe';
+import { TriplePipe } from './triple.pipe';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { Ex5Component } from './ex5/ex5.component';
     Ex3ListComponent,
     Ex3ListItemComponent,
     Ex4Component,
-    Ex5Component
+    Ex5Component,
+    DoublePipe,
+    TriplePipe
   ],
   imports: [
     CommonModule,

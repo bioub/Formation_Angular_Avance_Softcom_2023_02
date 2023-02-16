@@ -16,6 +16,8 @@ export class Ex3Component implements OnInit {
   }
 
   addValue() {
-    this.items.push(this.value);
+    // this.items.push(this.value);
+
+    this.items = [...this.items, this.value];
   }
 }

@@ -1,0 +1,38 @@
+<div>
+  <h2>MyApp</h2>
+  <nav class="menu">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+  </nav>
+</div>
+
+<!-- <app-select [selected]="name" (selectedChange)="name = $event" [items]="['Romain', 'Toto', 'Titi']" ></app-select> -->
+
+<app-select [(selected)]="name" [items]="['Romain', 'Toto', 'Titi']"></app-select>
+
+<!-- <app-select [ngModel]="" (ngModelChange)=""></app-select> -->
+
+<!--
+  selectEl.addEventListener('selectedChange', ($event) => {
+    name =
+  });
+-->
+
+<p>
+  Selected name : {{ name }}
+</p>
+
+<!-- <app-select></app-select> -->
+
+<!-- <app-select>
+  <p>MyMenu</p>
+</app-select> -->
+
+
+<!-- <app-tabs>
+  <app-tab></app-tab>
+  <app-tab></app-tab>
+  <app-tab></app-tab>
+  <app-tab></app-tab>
+</app-tabs> -->

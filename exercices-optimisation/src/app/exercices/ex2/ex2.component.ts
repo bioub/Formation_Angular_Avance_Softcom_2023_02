@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-ex2',
@@ -14,14 +14,25 @@ export class Ex2Component implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    document.addEventListener('click', (event) => {
-      console.log('click from ex2');
+  //   document.addEventListener('click', (event) => {
+  //     console.log('click from ex2');
+
+  //     if (this.boxRef.nativeElement.contains(event.target as Node)) {
+  //       this.countClickInside++;
+  //     } else {
+  //       this.countClickOutside++;
+  //     }
+  //   });
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleDocumentClick(event: MouseEvent) {
+    console.log('click from ex2');
 
       if (this.boxRef.nativeElement.contains(event.target as Node)) {
         this.countClickInside++;
       } else {
         this.countClickOutside++;
       }
-    });
   }
 }

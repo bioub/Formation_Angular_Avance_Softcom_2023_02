@@ -21,6 +21,6 @@ export class Ex5Component implements OnInit {
 
   triple(nb: string | number) {
     console.log('triple called');
-    return Number(nb) * 2;
+    return Number(nb) * 3;
   }
 }
