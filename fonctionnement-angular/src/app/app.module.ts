@@ -5,11 +5,13 @@ import { TodosModule } from './todos/todos.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClockComponent } from './clock/clock.component';
+import { CountdownComponent } from './countdown/countdown.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClockComponent
+    ClockComponent,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,
