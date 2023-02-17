@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 import { User } from '../../shared/models/user';
 import { UserService } from '../user.service';
@@ -15,18 +15,30 @@ export class UserShowComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
+    // console.log(this.route.snapshot.params); // valeur actuelle
+
+    // this.route.params.subscribe((params) => {
+    //   console.log(params); // valeurs dans le temps
+    // });
+
     this.route.params
       .pipe(
         map(params => Number(params.id)),
+        tap((val) => console.log(val)),
         switchMap((id: number) => this.userService.getById$(id)),
       )
       .subscribe((user: User) => {
         this.user = user;
       });
-  }
 
+    // this.route.params.subscribe((params) => {
+    //   this.userService.getById$(params.id).subscribe((user) => {
+    //     this.user = user;
+    //   });
+    // });
+  }
 }

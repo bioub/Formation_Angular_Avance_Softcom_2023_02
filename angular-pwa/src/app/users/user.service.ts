@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../shared/models/user';
@@ -22,6 +23,14 @@ export class UserService {
   }
 
   getById$(id: number): Observable<User> {
-    return this.http.get<User>(`${environment.apiBaseUrl}/users/${id}`);
+    const req$ = this.http.get<User>(`${environment.apiBaseUrl}/users/${id}`);
+
+    if (Number(id) === 4) {
+      return req$.pipe(
+        delay(3000),
+      )
+    }
+
+    return req$;
   }
 }
