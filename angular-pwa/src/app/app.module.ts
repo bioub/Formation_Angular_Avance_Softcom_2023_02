@@ -14,7 +14,7 @@ import { UsersModule } from './users/users.module';
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, HomeComponent, MenuComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     SharedModule,
     TodosModule,
     UsersModule,
