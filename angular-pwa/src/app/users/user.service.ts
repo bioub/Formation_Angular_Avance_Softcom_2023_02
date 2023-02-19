@@ -1,21 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { User } from '../shared/models/user';
+import { UserServiceInterface } from './user-service.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
-  events = new EventEmitter<string>();
+export class UserService implements UserServiceInterface {
+  events = new Subject<string>();
+
+  users$!: ReplaySubject<User[]>;
 
   constructor(private http: HttpClient) {}
 
   getList$(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiBaseUrl}/users`);
+    if (!this.users$) {
+      this.users$ = new ReplaySubject<User[]>(1);
+      this.http.get<User[]>(`${environment.apiBaseUrl}/users`).subscribe(this.users$);
+    }
+
+    return this.users$;
   }
 
   create$(user: User): Observable<User> {

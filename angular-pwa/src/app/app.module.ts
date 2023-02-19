@@ -1,5 +1,5 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule, isDevMode } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgModule, isDevMode, InjectionToken } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,9 @@ import { SharedModule } from './shared/shared.module';
 import { TodosModule } from './todos/todos.module';
 import { UsersModule } from './users/users.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { UserService } from './users/user.service';
+import { of, Subject } from 'rxjs';
+import { UserServiceInterface } from './users/user-service.interface';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, HomeComponent, MenuComponent],
@@ -28,7 +31,37 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: UserService,
+    //   useValue: {
+    //     events: new Subject<string>(),
+    //     getList$() {
+    //       return of([{id: 1, name: 'Toto'}])
+    //     }
+    //   }
+    // }
+    // {
+    //   provide: UserService,
+    //   useFactory: (httpClient) => {
+    //     return new GenericService(httpClient, 'https://jsonplaceholder.typicode.com/users');
+    //   },
+    //   deps: [HttpClient]
+    // }
+    // {
+    //   provide: UserService,
+    //   useClass: UserService,
+    // }
+    // UserService
+    // {
+    //   provide: UserService,
+    //   useExisting: UserProdService,
+    // }
+    {
+      provide: UserServiceInterface,
+      useExisting: UserService,
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

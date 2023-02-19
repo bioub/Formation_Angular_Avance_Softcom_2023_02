@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { LoggerService } from '../logger.service';
 
 import { SharedModule } from '../shared/shared.module';
 import { UserAddComponent } from './user-add/user-add.component';
@@ -11,6 +12,16 @@ import { UsersRoutingModule } from './users-routing.module';
     UsersRoutingModule,
     SharedModule,
   ],
-  declarations: [UsersListComponent, UserShowComponent, UserAddComponent]
+  declarations: [UsersListComponent, UserShowComponent, UserAddComponent],
+  providers: [
+    {
+      provide: LoggerService,
+      useValue: {
+        log(msg) {
+          console.log('UsersModule', msg);
+        }
+      }
+    }
+  ]
 })
 export class UsersModule { }
